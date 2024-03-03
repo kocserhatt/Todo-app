@@ -14,16 +14,16 @@ console.log(toDo);
 
 
 
-function getToDo(){
+function getToDo() {
     toDoEkle.innerHTML = '';
-    for (let i = 0; i <toDo.length; i++) {
+    for (let i = 0; i < toDo.length; i++) {
         toDoEkle.innerHTML += `
-        <li id="${i}">
-            ${toDo[i].gorev} 
-            <button class="editBtn">Edit</button> 
-            <button class="deleteBtn">Delete</button>
-            <button class="okeyBtn">Completed</button>
-        </li>`
+            <li id="${i}">
+                ${toDo[i].gorev} 
+                <button class="editBtn">Düzenle</button> 
+                <button class="deleteBtn">Sil</button>
+                <button class="okeyBtn">Tamamlandı</button>
+            </li>`;
     }
     bindDeleteBtns();
     bindEditBtns();
@@ -69,14 +69,15 @@ function bindEditBtns(){
 }
 
 
-function bindOkeyBtns(){
+function bindOkeyBtns() {
     const okeyBtns = document.querySelectorAll('.okeyBtn');
-    for(const okeyBtn of okeyBtns){
-        okeyBtn.addEventListener("click",function(){
-            okeyBtn.parentElement.style.textDecoration ="line-through";
-        })
+    for (const okeyBtn of okeyBtns) {
+        okeyBtn.addEventListener("click", function () {
+            const taskTextElement = this.parentElement.firstChild;
+            taskTextElement.style.textDecoration = "line-through";
+        });
     }
-
 }
+
 
 getToDo();
